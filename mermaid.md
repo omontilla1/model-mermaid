@@ -1,6 +1,5 @@
-
-
 class Personatge {
+
   +DNI : string
   +Nom : string
   +Cognom : string
@@ -13,6 +12,7 @@ class Personatge {
 }
 
 class Item {
+
   +ID_Item : int
   +Nom : string
   +Tipus : string
@@ -22,17 +22,20 @@ class Item {
 }
 
 class Arma {
+
   +Dany : int
   +Abast : int
   +Tipus_Dany : string
 }
 
 class Objecte {
+
   +Descripcio : string
   +Consumible : boolean
 }
 
 class Habilitat {
+
   +ID_Habilitat : int
   +Nom : string
   +Tipus : string
@@ -43,6 +46,7 @@ class Habilitat {
 }
 
 class Subhabilitat {
+
   +ID_Subhabilitat : int
   +Nom : string
   +Millora : string
@@ -50,6 +54,7 @@ class Subhabilitat {
 }
 
 class Enemic {
+
   +ID_Enemic : int
   +Nom : string
   +Tipus : string
@@ -58,6 +63,7 @@ class Enemic {
 }
 
 class Boti {
+
   +ID_Boti : int
   +Probabilitat : float
   +Quantitat_Min : int
@@ -65,6 +71,7 @@ class Boti {
 }
 
 class Mascota {
+
   +ID_Mascota : int
   +Nom : string
   +Tipus : string
@@ -73,11 +80,10 @@ class Mascota {
 }
 
 class InventariMascota {
+
   +ID_Item : int
   +Quantitat : int
 }
-
- 
 
 Personatge "1" --> "N" Item : Posseeix
 Personatge "1" --> "0..1" Item : Equipa
@@ -92,18 +98,17 @@ Habilitat "1" --> "N" Subhabilitat : Especialitza
 
 Habilitat "1" --> "0..N" Mascota : Acompanya
 
-
-
 Item <|-- Arma
 Item <|-- Objecte
+
 
 Explicación del modelo conceptual
 
 1. Personatge
 
-Representa al jugador principal o personaje del videojuego
+Representa al jugador principal o personaje del videojuego.
 
-Atributos
+Atributos:
 DNI
 Nom
 Cognom
@@ -113,7 +118,8 @@ Agilitat
 Carisma
 Nivell
 Experiencia
-Relaciones
+
+Relaciones:
 Posee muchos objetos/items
 Puede equipar un item
 Aprende habilidades
@@ -121,40 +127,25 @@ Se enfrenta a enemigos
 
 2. Item
 
-Representa los objetos generales del videojuego
+Representa los objetos generales del videojuego.
 
-Atributos
-
+Atributos:
 ID_Item
 Nom
 Tipus
 Pes
 Qualitat
 Preu
-Subclases
+
+Subclases:
 Arma
-
-Objetos ofensivos
-
-Atributos
-
-Dany
-Abast
-Tipus_Dany
 Objecte
-
-Objetos consumibles o especiales
-
-Atributos:
-
-Descripcio
-Consumible
 
 3. Habilitat
 
-Representa habilidades que usan personajes y mascotas
+Representa habilidades que usan personajes y mascotas.
 
-Atributos
+Atributos:
 ID_Habilitat
 Nom
 Tipus
@@ -162,72 +153,76 @@ Dany
 Cost
 Cooldown
 Descripcio
-Relaciones
+
+Relaciones:
 Un personaje aprende habilidades
 Una habilidad puede especializarse
-Algunas habilidades acompañan a mascotas
+Algunas habilidades acompañan mascotas
 
 4. Subhabilitat
 
-Mejoras o evoluciones de habilidades
+Mejoras o evoluciones de habilidades.
 
-Atributos
+Atributos:
 ID_Subhabilitat
 Nom
 Millora
 Valor_Afegit
+
 5. Enemic
 
-Representa enemigos del juego
+Representa enemigos del juego.
 
-Atributos
+Atributos:
 ID_Enemic
 Nom
 Tipus
 Nivell
 Vida
-Relaciones
+
+Relaciones:
 Se enfrenta contra personajes
 Puede tener botines
 
 6. Boti
 
-Representa recompensas obtenidas al derrotar enemigos
+Representa recompensas obtenidas al derrotar enemigos.
 
-Atributos
+Atributos:
 ID_Boti
 Probabilitat
 Quantitat_Min
 Quantitat_Max
+
 7. Mascota
 
-Compañeros o criaturas que ayudan al jugador
+Compañeros o criaturas que ayudan al jugador.
 
-Atributos
+Atributos:
 ID_Mascota
 Nom
 Tipus
 Nivell
 Habilitat_Especial
-Relaciones
+
+Relaciones:
 Puede cargar inventario
 Puede acompañar habilidades
 
 8. InventariMascota
 
-Inventario transportado por la mascota
+Inventario transportado por la mascota.
 
-Atributos
+Atributos:
 ID_Item
 Quantitat
 
-Relaciones y cardinalidades
-Relación	Cardinalidad	Descripción
-Personatge → Item	1:N	Un personaje puede poseer muchos items
-Personatge → Item (Equipa)	1:0..1	Puede equipar un item
-Personatge → Habilitat	1:N	Aprende habilidades
-Personatge ↔ Enemic	M:N	Se enfrenta a enemigos
-Enemic → Boti	1:N	Un enemigo puede soltar varios botines
-Mascota → InventariMascota	1:N	La mascota puede cargar varios objetos
-Habilitat → Subhabilitat	1:N	Una habilidad tiene varias mejoras
-Habilitat → Mascota	1:0..N	Algunas habilidades acompañan mascotas
+Relaciones y cardinalidades:
+Personatge → Item (1:N): Un personaje puede poseer muchos items
+Personatge → Item (0..1): Puede equipar un item
+Personatge → Habilitat (1:N): Aprende habilidades
+Personatge ↔ Enemic (M:N): Se enfrenta a enemigos
+Enemic → Boti (1:N): Puede soltar botines
+Mascota → InventariMascota (1:N): Puede cargar objetos
+Habilitat → Subhabilitat (1:N): Tiene mejoras
+Habilitat → Mascota (0..N): Puede acompañar mascotas
