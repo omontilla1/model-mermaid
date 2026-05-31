@@ -1,3 +1,4 @@
+```text
 class Personatge {
 
   +DNI : string
@@ -102,127 +103,103 @@ Item <|-- Arma
 Item <|-- Objecte
 
 
-Explicación del modelo conceptual
+# Explicación del modelo conceptual
 
-1. Personatge
-
+## Personatge
 Representa al jugador principal o personaje del videojuego.
 
-Atributos:
-DNI
-Nom
-Cognom
-Vida
-Força
-Agilitat
-Carisma
-Nivell
-Experiencia
+**Atributos:**
+DNI, Nom, Cognom, Vida, Força, Agilitat, Carisma, Nivell, Experiencia
 
-Relaciones:
-Posee muchos objetos/items
-Puede equipar un item
-Aprende habilidades
-Se enfrenta a enemigos
+**Relaciones:**
+- Posee muchos objetos/items  
+- Puede equipar un item  
+- Aprende habilidades  
+- Se enfrenta a enemigos  
 
-2. Item
+---
 
+## Item
 Representa los objetos generales del videojuego.
 
-Atributos:
-ID_Item
-Nom
-Tipus
-Pes
-Qualitat
-Preu
+**Atributos:**
+ID_Item, Nom, Tipus, Pes, Qualitat, Preu
 
-Subclases:
-Arma
-Objecte
+**Subclases:**
+- Arma  
+- Objecte  
 
-3. Habilitat
+---
 
+## Habilitat
 Representa habilidades que usan personajes y mascotas.
 
-Atributos:
-ID_Habilitat
-Nom
-Tipus
-Dany
-Cost
-Cooldown
-Descripcio
+**Atributos:**
+ID_Habilitat, Nom, Tipus, Dany, Cost, Cooldown, Descripcio
 
-Relaciones:
-Un personaje aprende habilidades
-Una habilidad puede especializarse
-Algunas habilidades acompañan mascotas
+**Relaciones:**
+- Un personaje aprende habilidades  
+- Puede especializarse en subhabilidades  
+- Algunas acompañan mascotas  
 
-4. Subhabilitat
+---
 
+## Subhabilitat
 Mejoras o evoluciones de habilidades.
 
-Atributos:
-ID_Subhabilitat
-Nom
-Millora
-Valor_Afegit
+**Atributos:**
+ID_Subhabilitat, Nom, Millora, Valor_Afegit
 
-5. Enemic
+---
 
+## Enemic
 Representa enemigos del juego.
 
-Atributos:
-ID_Enemic
-Nom
-Tipus
-Nivell
-Vida
+**Atributos:**
+ID_Enemic, Nom, Tipus, Nivell, Vida
 
-Relaciones:
-Se enfrenta contra personajes
-Puede tener botines
+**Relaciones:**
+- Se enfrenta a personajes  
+- Puede soltar botines  
 
-6. Boti
+---
 
+## Boti
 Representa recompensas obtenidas al derrotar enemigos.
 
-Atributos:
-ID_Boti
-Probabilitat
-Quantitat_Min
-Quantitat_Max
+**Atributos:**
+ID_Boti, Probabilitat, Quantitat_Min, Quantitat_Max
 
-7. Mascota
+---
 
+## Mascota
 Compañeros o criaturas que ayudan al jugador.
 
-Atributos:
-ID_Mascota
-Nom
-Tipus
-Nivell
-Habilitat_Especial
+**Atributos:**
+ID_Mascota, Nom, Tipus, Nivell, Habilitat_Especial
 
-Relaciones:
-Puede cargar inventario
-Puede acompañar habilidades
+**Relaciones:**
+- Puede cargar inventario  
+- Puede acompañar habilidades  
 
-8. InventariMascota
+---
 
+## InventariMascota
 Inventario transportado por la mascota.
 
-Atributos:
-ID_Item
-Quantitat
+**Atributos:**
+ID_Item, Quantitat
 
-Relaciones y cardinalidades:
-Personatge → Item (1:N): Un personaje puede poseer muchos items
-Personatge → Item (0..1): Puede equipar un item
-Personatge → Habilitat (1:N): Aprende habilidades
-Personatge ↔ Enemic (M:N): Se enfrenta a enemigos
-Enemic → Boti (1:N): Puede soltar botines
-Mascota → InventariMascota (1:N): Puede cargar objetos
-Habilitat → Subhabilitat (1:N): Tiene mejoras
-Habilitat → Mascota (0..N): Puede acompañar mascotas
+---
+
+## Relaciones y cardinalidades
+- Personatge → Item (1:N): Un personaje puede poseer muchos items  
+- Personatge → Item (0..1): Puede equipar un item  
+- Personatge → Habilitat (1:N): Aprende habilidades  
+- Personatge ↔ Enemic (M:N): Se enfrenta a enemigos  
+- Enemic → Boti (1:N): Puede soltar botines  
+- Mascota → InventariMascota (1:N): Puede cargar objetos  
+- Habilitat → Subhabilitat (1:N): Tiene mejoras  
+- Habilitat → Mascota (0..N): Puede acompañar mascotas  
+
+```
