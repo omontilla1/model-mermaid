@@ -1,4 +1,5 @@
-```text
+```mermaid
+erDiagram
 class Personatge {
 
   +DNI : string
